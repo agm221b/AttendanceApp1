@@ -9,15 +9,15 @@
 	
 		
 		
-		$dbstatus = mysqli_select_db($con,"lakshya") or die("Database not found");;
+		$dbstatus = mysqli_select_db($con,"attendance") or die("Database not found");;
 		
 		
 		//////////////////////////////////////////// I'll send an ID, you just search for it in the table, and return the password with a name value pair
 
                 //fetch ID as namevaluepair parameter 'ID' into $ID
                 
-        $ID = $_POST['roll']; //entered by student in login page
-        $pass = $_POST['password']; //entered by student        
+        $ID = $_POST['ID']; //entered by student in login page
+      //  $pass = $_POST['password']; //entered by student        //not sending password to PHP
 		
 		$sql = "select  * from student where roll = $ID "; 
 		
@@ -44,10 +44,10 @@
                         */
             $password=$row['password']; //----name of column in bold //password in database
 
-			if($pass != $password)
-            {
-                die('ENTER CORRECT PASSWORD');
-            }
+			//if($pass != $password)	//since I've already done checking in android
+         //   {
+         //       die('ENTER CORRECT PASSWORD');
+         //   }
 			array_push($list, array("ID"=>$ID,"password"=>$password));
 				//$row = mysqli_fetch_array($result);
 		}
