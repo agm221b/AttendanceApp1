@@ -41,7 +41,7 @@ foreach($final as $k=>$m)
 //$rs = mysql_query($query);
 //$row = mysql_fetch_row($rs);
 
-$final[0] = $date;// fetch date from android
+$final[0] = $_POST['date'];// fetch date from android////////////
 
 $sql = "insert into TABLE_NAME values(";
 $sql .= implode(',', $final);
