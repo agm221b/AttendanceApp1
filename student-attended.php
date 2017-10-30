@@ -8,8 +8,9 @@
 $my_file = 'temp_register.txt';
 $handle = fopen($my_file,'a');
 
-$roll = 'k';//roll number of student from android studio;
-$insert = $roll."\n";
+
+$roll = $_POST['ID'];//roll number of student from android studio;
+$insert = $roll."\r\n";
 fwrite($handle,$insert);       
 
 ?>

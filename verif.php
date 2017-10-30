@@ -17,7 +17,7 @@
                 //fetch ID as namevaluepair parameter 'ID' into $ID
                 
         $ID = $_POST['ID']; //entered by student in login page
-      //  $pass = $_POST['password']; //entered by student        //not sending password to PHP
+       $pass = $_POST['password']; //entered by student        //not sending password to PHP
 		
 		$sql = "select  * from student where roll = $ID "; 
 		
@@ -44,7 +44,7 @@
                         */
             $password=$row['password']; //----name of column in bold //password in database
 
-			//if($pass != $password)	//since I've already done checking in android
+			if($pass != $password)	//since I've already done checking in android
          //   {
          //       die('ENTER CORRECT PASSWORD');
          //   }

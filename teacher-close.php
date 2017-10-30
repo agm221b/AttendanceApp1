@@ -1,3 +1,4 @@
+
 <?php
 
 /**
@@ -6,28 +7,41 @@
  */
  /*student details size 5*/
  
-$dblink = mysql_connect('','','','');
-mysql_select_db(hr);
+$dblink = mysqli_connect('localhost','root','','attendance');
+if(!$dblink)
+		{
+			die("Connection Error");
+		}
+
 //send fromm android intoo fileopen
-$link = fopen('temp-register', 'r');
+$link = fopen('temp_register.txt', 'r');
 $sheet = array();
 $i = 0;
 $k = 0;
-foreach($sheet as $i)
+do{$sheet[$k] = 0;$k++;}while($k<5);
+do
 {
     $i = fgets($link);
-    
+	$sheet[(int)$i] = 1;
+	echo "<script type='text/javascript'>alert($i);</script>";
+	
+		
 }
+while($i);
+
 //0=>0,1=>0,2=>1//
-asort($sheet);
-$final = array();
+//asort($sheet);
+//$final = array();
 $j = 0;
+$q=1;
+/*
 while($j<5)
 {
     $final[$j] = 0;
-}
+}	
+*/
 
-foreach($final as $k=>$m)
+/*foreach($final as $k=>$m)
 {
     //$j = 0;
     foreach($sheet as $val)
@@ -36,20 +50,27 @@ foreach($final as $k=>$m)
             $m = 1;    
     }
     
-}
+}*/
 //$query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ATTENDANCE";
 //$rs = mysql_query($query);
 //$row = mysql_fetch_row($rs);
 
-$final[0] = $_POST['date'];// fetch date from android////////////
+//$date= $_POST['date1'];// fetch date from android////////////
 
-$sql = "insert into TABLE_NAME values(";
-$sql .= implode(',', $final);
-$sql .= ")";
-mysql_query($sql);
+//$sheet[0] = $date1;
+$sheet[0]='1-11-17';
+
+//echo "<script type='text/javascript'>$sheet[0]</script>";
+
+$sql = "insert into studreg values('$sheet[0]','$sheet[1]','$sheet[2]','$sheet[3]','$sheet[4]');";
+//$sql .= implode(',', '$sheet');
+
+//$sql .= ')';
+mysqli_query($dblink,$sql);
 
 fclose($link);
 
-unlink("temp-register.txt");
+unlink("temp_register.txt");
 
 ?>
+
