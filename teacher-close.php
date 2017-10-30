@@ -43,13 +43,13 @@ foreach($final as $k=>$m)
 
 $final[0] = $_POST['date'];// fetch date from android////////////
 
-$sql = "insert into TABLE_NAME values(";
+$sql = "insert into TABLE_NAME values("; ////ENTER TABLENAME EDIT AS YOU SEE FIT
 $sql .= implode(',', $final);
 $sql .= ")";
 mysql_query($sql);
 
 fclose($link);
 
-unlink("temp-register.txt");
+unlink("temp_register.txt");
 
 ?>
