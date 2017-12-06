@@ -7,7 +7,7 @@
  */
  /*student details size 5*/
  
-$dblink = mysqli_connect('localhost','root','','attendance');
+$dblink = mysqli_connect('localhost','root','','studreg');
 if(!$dblink)
 		{
 			die("Connection Error");
@@ -58,11 +58,15 @@ while($j<5)
 //$date= $_POST['date1'];// fetch date from android////////////
 
 //$sheet[0] = $date1;
-$sheet[0]='1-11-17';
+//$sheet[0]='1-11-17';
 
 //echo "<script type='text/javascript'>$sheet[0]</script>";
 
 //$sql = "insert into studreg values('$sheet[0]','$sheet[1]','$sheet[2]','$sheet[3]','$sheet[4]');";
+
+date_default_timezone_set('Asia/Kolkata');
+$sheet[0] = "".date("Y-m-d");
+
 
 $sql = "insert into stdreg values(";
 $sql .= implode(',', '$sheet');
