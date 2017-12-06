@@ -62,10 +62,12 @@ $sheet[0]='1-11-17';
 
 //echo "<script type='text/javascript'>$sheet[0]</script>";
 
-$sql = "insert into studreg values('$sheet[0]','$sheet[1]','$sheet[2]','$sheet[3]','$sheet[4]');";
-//$sql .= implode(',', '$sheet');
+//$sql = "insert into studreg values('$sheet[0]','$sheet[1]','$sheet[2]','$sheet[3]','$sheet[4]');";
 
-//$sql .= ')';
+$sql = "insert into stdreg values(";
+$sql .= implode(',', '$sheet');
+$sql .= ");";
+
 mysqli_query($dblink,$sql);
 
 fclose($link);
